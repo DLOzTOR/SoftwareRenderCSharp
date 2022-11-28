@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 
-namespace RenderSFML.Logic
+namespace SoftwareRender.Logic
 {
     struct Model
     {
@@ -43,5 +44,7 @@ namespace RenderSFML.Logic
             }
             return  triangleStr;
         }
+        static public Model Cube = new Model(new List<Logic.Vertex>() { new Logic.Vertex(new Vector3(0, 0, 0)), new Logic.Vertex(new Vector3(0, 100, 0)), new Logic.Vertex(new Vector3(100, 0, 0)), new Logic.Vertex(new Vector3(100, 100, 0)), }, "0 1 2,1 2 3");
     }
+    
 }

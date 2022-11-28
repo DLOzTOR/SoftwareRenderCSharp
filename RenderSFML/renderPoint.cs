@@ -4,7 +4,7 @@ using System.Text;
 using System.Numerics;
 using SFML.Graphics;
 
-namespace RenderSFML
+namespace SoftwareRender
 {
     class renderPoint
     {

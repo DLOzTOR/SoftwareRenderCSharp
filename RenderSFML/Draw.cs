@@ -5,12 +5,12 @@ using System.Text;
 using System.Numerics;
 using SFML.Graphics;
 
-namespace RenderSFML
+namespace SoftwareRender
 {
     class Draw
     {
 
-        public static List<renderPoint> Line(Vector3 point0, Vector3 point1)
+        public static renderPoint[] Line(Vector3 point0, Vector3 point1)
         {
             bool swap = false;
             int x0 = (int)point0.X, y0 = (int)point0.Y, z0 = (int)point0.Z;
@@ -27,7 +27,6 @@ namespace RenderSFML
                 (y0, y1) = (y1, y0);
                 (z0, z1) = (z1, z0);
             }
-            List<renderPoint> returnImg = new List<renderPoint>();
             int deltaX = x1 - x0;
             int deltaY = y1 - y0;
             int deltaZ = z1 - z0;
@@ -37,14 +36,15 @@ namespace RenderSFML
             int errorZ = 0;
             int y = y0;
             int z = z0;
+            renderPoint[] returnImg = new renderPoint[deltaX + 1];
             for (int x = x0; x <= x1; x++)
             {
                 if (swap)
                 {
-                    returnImg.Add(new renderPoint(new Vector3(y, x, z), Color.White));
+                    returnImg[Math.Abs(x0-x)]=(new renderPoint(new Vector3(y, x, z), Color.White));
                 }
                 else
-                    returnImg.Add(new renderPoint(new Vector3(x, y, z), Color.White));
+                    returnImg[Math.Abs(x0 - x)] = (new renderPoint(new Vector3(x, y, z), Color.White));
                 errorY += deltaErrorY;
                 errorZ += deltaErrorZ;
                 if (errorY > deltaX)
@@ -62,15 +62,21 @@ namespace RenderSFML
         }
         public static List<renderPoint> Triangle(Vector3 point0, Vector3 point1, Vector3 point2)
         {
-            List<renderPoint> firstLine = new List<renderPoint>();
+            renderPoint[] firstLine;
             List<renderPoint> renderTriangle = new List<renderPoint>();
-            firstLine.AddRange(Line(point0, point1));
+            firstLine = Line(point0, point1);
             foreach(var i in firstLine)
             {
                 renderTriangle.AddRange(Line(i.position, point2));
             }
             renderTriangle.AddRange(firstLine);
             return renderTriangle;
+        }
+        
+        bool pointInsideTriangle(Vector3 checkPoint,Vector3 point0, Vector3 point1, Vector3 point2)
+        {
+
+            return false;
         }
         public static List<renderPoint> Circule(Vector3 center, int radius, int pointsCount)
         {

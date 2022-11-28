@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RenderSFML.Logic
+namespace SoftwareRender.Logic
 {
     class Polygon
     {

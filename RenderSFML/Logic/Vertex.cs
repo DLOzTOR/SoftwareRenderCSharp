@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using SFML.Graphics;
 
-namespace RenderSFML.Logic
+namespace SoftwareRender.Logic
 {
     struct Vertex
     {

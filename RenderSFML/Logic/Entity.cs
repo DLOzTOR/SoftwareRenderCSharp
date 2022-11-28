@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RenderSFML.Logic
+namespace SoftwareRender.Logic
 {
     class Entity
     {
@@ -16,11 +16,11 @@ namespace RenderSFML.Logic
             this.position = position;
             this.model = model;
         }
-        public void Update()
+        public virtual void Update()
         {
             position += direction;
         }
-        public List<renderPoint> Render()
+        public virtual List<renderPoint> Render()
         {
             List<renderPoint> render = new List<renderPoint>();
             foreach(var poly in model.polygons)
