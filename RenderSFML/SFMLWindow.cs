@@ -17,6 +17,9 @@ namespace SoftwareRender
         Color[,] FrameBuffer;
         Image img;
         Scene scene = new Scene();
+
+        public RenderWindow Window { get => window;}
+
         public SFMLWindow(uint width, uint height, string name)
         {
             _width = width;
@@ -36,6 +39,10 @@ namespace SoftwareRender
             FrameBuffer = new Color[_width, _height];
             img = new Image(FrameBuffer);
             window.KeyPressed += Window_KeyPressed;
+            foreach (var entity in scene.Entityes)
+            {
+                entity.Start(window);
+            }
         }
         void Update()
         {

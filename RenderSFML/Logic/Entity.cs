@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Collections.Generic;
-using System.Text;
+using SFML.Graphics;
 
 namespace SoftwareRender.Logic
 {
@@ -15,6 +15,10 @@ namespace SoftwareRender.Logic
         {
             this.position = position;
             this.model = model;
+        }
+        public virtual void Start(RenderWindow window)
+        {
+            
         }
         public virtual void Update()
         {
