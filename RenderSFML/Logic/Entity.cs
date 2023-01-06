@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Collections.Generic;
 using SFML.Graphics;
+using SoftwareRender.Render;
 
 namespace SoftwareRender.Logic
 {
@@ -24,9 +25,9 @@ namespace SoftwareRender.Logic
         {
             position += direction;
         }
-        public virtual List<renderPoint> Render()
+        public virtual List<RenderPoint> Render()
         {
-            List<renderPoint> render = new List<renderPoint>();
+            List<RenderPoint> render = new List<RenderPoint>();
             foreach(var poly in model.polygons)
             {
                 render.AddRange(Draw.Triangle(poly.triangle[0].position + position, poly.triangle[1].position + position, poly.triangle[2].position + position));

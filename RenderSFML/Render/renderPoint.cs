@@ -4,14 +4,14 @@ using System.Text;
 using System.Numerics;
 using SFML.Graphics;
 
-namespace SoftwareRender
+namespace SoftwareRender.Render
 {
-    class renderPoint
+    class RenderPoint
     {
         public Vector3 position;
         public Color color;
 
-        public renderPoint(Vector3 position, Color color)
+        public RenderPoint(Vector3 position, Color color)
         {
             this.position = position;
             this.color = color;

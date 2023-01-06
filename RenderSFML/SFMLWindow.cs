@@ -1,10 +1,9 @@
 ﻿using SFML.Window;
 using SFML.Graphics;
-using SFML.System;
-using System;
 using System.Collections.Generic;
-using System.Numerics;
 using SoftwareRender.Logic;
+using SoftwareRender.Render;
+
 namespace SoftwareRender
 {
     class SFMLWindow
@@ -25,10 +24,6 @@ namespace SoftwareRender
             _width = width;
             _height = height;
             _name = name;
-        }
-        public void SetScene(Scene scene)
-        {
-            this.scene = scene;
         }
         void Awake()
         {
@@ -65,13 +60,13 @@ namespace SoftwareRender
         }
         private void Render()
         {
-            List<renderPoint> points = new List<renderPoint>();
+            List<RenderPoint> points = new List<RenderPoint>();
             FrameBuffer = new Color[_width, _height];
             foreach (var entity in scene.Entityes)
             {
                 points.AddRange(entity.Render());
             }
-
+            points.AddRange(TextRender.Numbers(new System.Numerics.Vector3(350, 350, 0), "0123456789", Color.White));
             foreach (var point in points)
             {
                 if (InImageSize((int)point.position.X, (int)point.position.Y, _width, _height)) FrameBuffer[(uint)point.position.X, (uint)point.position.Y]  = point.color;
@@ -89,6 +84,7 @@ namespace SoftwareRender
         }
         static bool InImageSize(int x, int y, uint width, uint heigth) => (x >= 0 && x < width) && (y >= 0 && y < heigth);
         void SetSprite(Sprite sprite) => this.sprite = sprite;
+        public void SetScene(Scene scene) => this.scene = scene;
         private void Window_KeyPressed(object sender, SFML.Window.KeyEventArgs e)
         {
             var window = (Window)sender;

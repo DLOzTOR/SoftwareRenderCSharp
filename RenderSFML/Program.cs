@@ -17,7 +17,7 @@ namespace SoftwareRender
             scene.AddEntety(new WayPointMover(new Vector3(0, 700, 0), Model.Cube, 5, new List<Vector3> { new Vector3(0, 700, 0), new Vector3(700, 700, 0), new Vector3(700, 0, 0), new Vector3(0, 0, 0) }));
             scene.AddEntety(new WayPointMover(new Vector3(700, 700, 0), Model.Cube, 5, new List<Vector3> { new Vector3(700, 700, 0), new Vector3(700, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 700, 0) }));
             scene.AddEntety(new WayPointMover(new Vector3(700, 0, 0), Model.Cube, 5, new List<Vector3> { new Vector3(700, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 700, 0), new Vector3(700, 700, 0), }));
-            scene.AddEntety(new ControlledEntity(new Vector3(350, 350, 0), Model.Cube));
+            //scene.AddEntety(new ControlledEntity(new Vector3(350, 350, 0), Model.Cube));
             SFMLWindow window = new SFMLWindow(_width, _height, "Render Window");
             window.SetScene(scene);
             window.Run();
